@@ -1,79 +1,32 @@
-# Morning Prep Dashboard — ASX 200 + Nasdaq 100
+# Morning Prep Dashboard v2
 
-## What it does
-Builds a single HTML dashboard you open each morning over coffee. Two tabs:
+## What's new vs v1
 
-**ASX 200 tab**
-- Market snapshot: ASX 200, futures, S&P 500, Nasdaq, VIX, Nikkei, Hang Seng
-- FX, rates & commodities: AUD/USD, US 10Y, Gold, WTI, Iron Ore, Copper
-- Claude-generated analyst narrative (overnight setup, rates, cap rates & RE, ASX macro flags, M&A, stocks to watch)
-- Your watchlist with overnight % moves
-- ASX announcements, Rates news, Property news, Macro flags, M&A deals
-
-**Nasdaq 100 tab**
-- Market snapshot focused on US close
-- Claude-generated narrative (overnight close, rates & tech, AI/semis, earnings, M&A, names to watch)
-- Your Nasdaq watchlist
-- US markets news, Tech & AI, Rates, M&A
-
----
+- **Four tabs now:** ASX 200, Nasdaq 100, My P&L, Week Ahead
+- **Sector heatmap** for both markets — colour-coded grid showing sector winners/losers at a glance
+- **Thesis-drift alerts** — each watchlist stock has a 1-line thesis; Claude flags when news contradicts it (highlighted in yellow)
+- **P&L tracker** — configure your actual holdings in HOLDINGS at the top of the script, see overnight P&L and total P&L per position
+- **Earnings calendar** — upcoming earnings for watchlist stocks (🔴 today, 🟡 within 2 days, ⚪ this week)
+- **Economic calendar** — key data releases via ForexFactory
+- **Week Ahead tab** — forward-looking Claude narrative on earnings, central banks, and macro themes
+- **Robust ASX announcements** — direct scrape from asx.com.au with RSS fallback
+- **Stale data handling** — flags tickers with missing or >1d old data rather than showing fake zeros
+- **Dark mode toggle** — top-right button
 
 ## Run it
 
-### Install dependencies
 ```bash
 pip3 install -r requirements.txt
-```
-
-### Set API key
-```bash
 export ANTHROPIC_API_KEY="sk-ant-..."
-```
-
-### Run
-```bash
 python3 morning_prep.py
 ```
 
-The script:
-1. Fetches live prices via Yahoo Finance
-2. Scrapes all the RSS feeds
-3. Generates analyst narratives via Claude
-4. Builds the HTML file
-5. Auto-opens it in your default browser
+Dashboard auto-opens in your browser.
 
-Takes about 60-90 seconds. Output lives in `output/morning_prep_YYYYMMDD_HHMM.html`.
+## Customise
 
----
-
-## Customising
-
-### Change watchlists
-Edit the top of `morning_prep.py`:
-```python
-ASX_WATCHLIST = ["CBA.AX", "BHP.AX", ...]
-NDX_WATCHLIST = ["NVDA", "AMD", ...]
-```
-Yahoo format: `.AX` suffix for ASX, plain ticker for US.
-
-### Add feeds
-Add entries to the `FEEDS` dict.
-
-### Add indices/commodities
-Add to `INDEX_TICKERS` dict. Find tickers at finance.yahoo.com.
-
----
-
-## Daily workflow
-1. Get out of bed
-2. Open Terminal, run `python3 morning_prep.py`
-3. Dashboard auto-opens in browser
-4. Read over coffee before ASX open (10am Sydney)
-
----
-
-## CV line
-> *Built a Python-based morning prep dashboard integrating live Yahoo Finance data, RSS news aggregation, and Claude-generated analyst commentary — covers ASX 200 and Nasdaq 100 with custom watchlists, rates/FX/commodities, and M&A flow.*
-
-## For interviews
-Open your laptop, show them the dashboard. It's hard to argue with someone who clearly does their own morning prep and built the tool to do it.
+Open the script and edit the lists at the top:
+- `ASX_WATCHLIST` — tuples of (ticker, thesis). Thesis drives the drift-detection logic.
+- `NDX_WATCHLIST` — same format for US names.
+- `HOLDINGS` — tuples of (ticker, shares, avg_cost) for your P&L tab.
+- `ASX_SECTOR_ETFS` / `NDX_SECTOR_ETFS` — sector ETF tickers for the heatmap.
