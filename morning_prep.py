@@ -563,7 +563,7 @@ def build_html(data):
   .tab.active {{ color: var(--brand); border-bottom: 3px solid var(--brand); background: var(--bg); }}
   .tab-content {{ display: none; background: var(--content-bg); padding: 22px; border-radius: 0 0 6px 6px; }}
   .tab-content.active {{ display: block; }}
-  .grid2 {{ display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 20px; }}
+  .grid2 {{ display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 20px; max-width: 900px; }}
   .grid3 {{ display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-bottom: 20px; }}
   h2 {{ font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--brand); margin: 20px 0 8px 0; padding-bottom: 5px; border-bottom: 1px solid var(--border); }}
   .card {{ background: var(--card); border: 1px solid var(--border); border-radius: 5px; padding: 14px 16px; }}
