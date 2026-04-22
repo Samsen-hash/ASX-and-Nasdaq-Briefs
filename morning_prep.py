@@ -568,6 +568,8 @@ def build_html(data):
   h2 {{ font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--brand); margin: 20px 0 8px 0; padding-bottom: 5px; border-bottom: 1px solid var(--border); }}
   .card {{ background: var(--card); border: 1px solid var(--border); border-radius: 5px; padding: 14px 16px; }}
   .tbl {{ width: 100%; border-collapse: collapse; font-size: 12.5px; }}
+  .tbl td:first-child, .tbl th:first-child {{ width: 40%; }}
+  .tbl td.num, .tbl th.num {{ width: 30%; white-space: nowrap; }}
   .tbl th {{ text-align: left; font-size: 10px; text-transform: uppercase; color: var(--muted); letter-spacing: 0.5px; padding: 5px 7px; border-bottom: 1px solid var(--border); }}
   .tbl td {{ padding: 6px 7px; border-bottom: 1px solid var(--border); }}
   .num {{ text-align: right; }}
