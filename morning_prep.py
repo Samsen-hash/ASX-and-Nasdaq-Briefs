@@ -629,7 +629,9 @@ def build_html(data):
   .tbl {{ width: 100%; border-collapse: collapse; font-size: 12.5px; }}
   .tbl th {{ text-align: left; font-size: 10px; text-transform: uppercase; color: var(--muted); letter-spacing: 0.5px; padding: 5px 7px; border-bottom: 1px solid var(--border); }}
   .tbl td {{ padding: 6px 7px; border-bottom: 1px solid var(--border); }}
-  .num {{ text-align: right; }}
+  .num {{ text-align: left; }}
+  .tbl th.num {{ text-align: left; }}
+  
 
   /* Watchlist-specific table */
   .wl-tbl {{ width: 100%; border-collapse: collapse; font-size: 12.5px; table-layout: fixed; }}
