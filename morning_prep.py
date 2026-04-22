@@ -572,7 +572,8 @@ def build_html(data):
   .tbl td.num, .tbl th.num {{ width: 30%; white-space: nowrap; }}
   .tbl th {{ text-align: left; font-size: 10px; text-transform: uppercase; color: var(--muted); letter-spacing: 0.5px; padding: 5px 7px; border-bottom: 1px solid var(--border); }}
   .tbl td {{ padding: 6px 7px; border-bottom: 1px solid var(--border); }}
-  .num {{ text-align: right; }}
+  .num {{ text-align: left; }}
+  .tbl th.num {{ text-align: left; }}
   .narrative {{ background: var(--bg); border-left: 4px solid var(--brand); padding: 16px 20px; border-radius: 4px; font-size: 13.5px; line-height: 1.65; }}
   .narrative p {{ margin: 8px 0; }}
   .narrative .mini-label {{ display: inline; color: var(--label); font-size: 10.5px; text-transform: uppercase; letter-spacing: 1px; margin-right: 6px; }}
